@@ -4,9 +4,6 @@ import { compose } from 'recompose';
 import * as aws from 'aws-sdk';
 import { SES } from 'aws-sdk';
 import { withFirebase } from '../../Firebase';
-import { Accounts } from 'web3-eth-accounts';
-
-const accounts = require('web3-eth-accounts');
 
 const SignUp = () => (
   <div>
