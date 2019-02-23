@@ -165,8 +165,8 @@ class SignUpPageBase extends Component {
         <div className="container u-space-2">
         <div className="w-md-75 w-lg-50 mx-md-auto">
             <div className="mb-7">
-              <h1 className="h3 text-primary font-weight-normal mb-0">Sign up to Nightstop</h1>
-              <p>Fill out the form to get started.</p>
+              <h1 className="h3 text-primary font-weight-normal mb-4">Sign up to Become a Nightstop Host</h1>
+              <p>Fill out the form below and a member of the Depaul team will get back to you as soon as possible.</p>
             </div>
 
             <div className="js-form-message form-group">
