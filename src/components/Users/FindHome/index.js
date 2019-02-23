@@ -30,22 +30,40 @@ class FindHomePageBase extends Component {
   }
 
   findHome() {
+
+    function isMatching(user, host) {
+      if(user.religion != host.religion && user.religion !== "All") return false;
+      return true;
+    }
+
     var userID = this.props.authUser.uid;
 
-    navigator.geolocation.getCurrentPosition(position => {
-      this.props.firebase.matches().add({
-        host: null,
-        isActive: true,
-        user: userID,
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        isApproved: false,
-      })
+    this.props.firebase.users().get().then(snapshot => {
+      let hosts = [];
+      if(snapshot.size) {
 
-      this.setState({
-        stage: '4'
-      })
-    });
+
+        snapshot.forEach(function(doc) {
+          // Criteria for matching algorithm
+          if(doc.data().isApprovedHost && isMatching(this.props.authUser, doc.data())) {
+            hosts.push({...doc.data(), uid: doc.id});
+          }
+        }.bind(this))
+
+        navigator.geolocation.getCurrentPosition(position => {
+          this.props.firebase.matches().add({
+            host: hosts[0].uid,
+            isActive: true,
+            user: userID,
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            isApproved: false,
+          })
+           
+          this.setState({stage:'4'})
+        })
+      }
+    })
   }
 
   childState(stage) {
@@ -53,7 +71,6 @@ class FindHomePageBase extends Component {
   }
 
   render() {
-    console.log(this.props);
     return(
       <main id="content" role="main">
         <div className="bg-primary">
