@@ -22,6 +22,8 @@ class MatchesDetailPageBase extends Component {
       name: null,
       hostLatitude: null,
       hostLongitude: null,
+      userLatitude: null,
+      userLongitude: null,
     }
 
   }
@@ -29,8 +31,9 @@ class MatchesDetailPageBase extends Component {
   componentDidMount() {
     this.props.firebase.match(this.props.match.params.id).onSnapshot(doc => {
       if(doc.data().host) {
+        this.setState({userLatitude: doc.data().latitude, userLongitude: doc.data().longitude})
         this.props.firebase.user(doc.data().host).get().then(details => {
-          this.setState({ name: details.data().name, hostLatitude: details.data().longitude,  hostLongitude: details.data().latitude})
+          this.setState({ name: details.data().name, hostLatitude: details.data().latitude,  hostLongitude: details.data().longitude})
         })
       }
     })
@@ -57,6 +60,8 @@ class MatchesDetailPageBase extends Component {
                 <p>Host Name: {this.state.name}</p>
                 <p>Host Longitude: {this.state.hostLongitude}</p>
                 <p>Host Latitude: {this.state.hostLatitude}</p>
+                <p>User Longitude: {this.state.userLongitude}</p>
+                <p>User Latitude: {this.state.userLatitude}</p>
 
 
               </div>
