@@ -4,15 +4,16 @@ import { withAuthentication } from '../Session';
 
 // generic components
 import Header from '../Header';
-import SignIn from '../Account/SignIn';
 import SignOut from '../Account/SignOut';
-import SignUp from '../Account/SignUp';
 import Forgot from '../Account/Forgot';
 
 // user pages
 import FindHome from '../Users/FindHome';
+import MatchesDetail from '../Users/MatchesDetail';
 
 // host pages
+import HostSignIn from '../Hosts/HostSignIn';
+import HostSignUp from '../Hosts/HostSignUp';
 import MyGuests from '../Hosts/MyGuests';
 
 // admin pages
@@ -47,9 +48,9 @@ class App extends Component {
 				<Header/>
 				<Switch>
 					<Route exact path="/" component={Home} />
-					<Route path="/signin" component = {SignIn}/>
+
 					<Route path="/signout" component = {SignOut}/>
-					<Route path="/signup" component = {SignUp}/>
+
 					<Route path="/forgot" component = {Forgot}/>
 
 					{/* admin pages */}
@@ -57,10 +58,13 @@ class App extends Component {
 					<Route path="/reviewmatches" component = {ReviewMatches}/>
 
 					{/* host pages */}
+					<Route path="/hostsignin" component = {HostSignIn}/>
+					<Route path="/hostsignup" component = {HostSignUp}/>
 					<Route path="/myguests" component = {MyGuests}/>
 
 					{/* user pages */}
 					<Route path="/findhome" component = {FindHome}/>
+					<Route exact path="/matches/:id" render={(props) => <MatchesDetail {...props}/> } />
 
 					{/* default route: page not found */}
 					<Route component={_404} />

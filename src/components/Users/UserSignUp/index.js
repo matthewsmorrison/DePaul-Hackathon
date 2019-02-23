@@ -5,13 +5,13 @@ import * as aws from 'aws-sdk';
 import { SES } from 'aws-sdk';
 import { withFirebase } from '../../Firebase';
 
-const SignUp = () => (
+const UserSignUp = (props) => (
   <div>
-    <SignUpPage/>
+    <UserSignUpPage props={props}/>
   </div>
 );
 
-class SignUpPageBase extends Component {
+class UserSignUpPageBase extends Component {
   constructor(props) {
 
     super(props);
@@ -53,7 +53,6 @@ class SignUpPageBase extends Component {
    });
 
    this.setState(newState);
-   this.props.history.push('/');
  }
 
   signUp(evt) {
@@ -71,12 +70,15 @@ class SignUpPageBase extends Component {
         return this.props.firebase.user(authUser.user.uid).set({
           name: name,
           email: email,
-          isAdmin: false,
+          isUser: true,
+          isApprovedHost: false,
+          isDepaul: false,
+          isHost: false,
           lastOnline: Date.now(),
         }, {merge: true},);
       })
       .then(() => {
-        this.setState({stage: 1});
+        this.props.props.childState('3');
       })
       .catch(error => {
         console.log(error);
@@ -102,6 +104,17 @@ class SignUpPageBase extends Component {
       alert("Some things are wrong on the sign-up form");
       this.setState({triedPress: true})
     }
+  }
+
+  componentDidMount() {
+    console.log(this.props.firebase);
+    // window.recaptchaVerifier = new this.props.firebase.auth().RecaptchaVerifier('sign-in-button', {
+    //   'size': 'invisible',
+    //   'callback': function(response) {
+    //     // reCAPTCHA solved, allow signInWithPhoneNumber.
+    //     this.props.firebase.onSignInSubmit();
+    //   }
+    // });
   }
 
   updateState(evt) {
@@ -156,14 +169,13 @@ class SignUpPageBase extends Component {
   }
 
   render() {
+    console.log(this.props);
     if(this.state.stage === 0) {
       return (
-        <main id="content" role="main">
-        <div className="container u-space-2">
         <div className="w-md-75 w-lg-50 mx-md-auto">
             <div className="mb-7">
-              <h1 className="h3 text-primary font-weight-normal mb-4">Sign up to Become a Nightstop Host</h1>
-              <p>Fill out the form below and a member of the Depaul team will get back to you as soon as possible.</p>
+              <h1 className="h3 text-primary font-weight-normal mb-4">Sign up to the Nightstop Network</h1>
+              <p>Fill out the form below to start using Nightstop services.</p>
             </div>
 
             <div className="js-form-message form-group">
@@ -201,35 +213,11 @@ class SignUpPageBase extends Component {
               </div>
             </div>
           </div>
-        </div>
-      </main>
-      )
-    }
-
-    else if (this.state.stage === 1) {
-      return (
-        <main id="content" role="main">
-        <div className="container u-space-2">
-          <div className="w-md-75 w-lg-50 mx-md-auto">
-            <div className="mb-7">
-              <h1 className="h3 text-primary font-weight-normal mb-0">Congratulations!</h1>
-              <p>You have been successfully signed up!</p>
-              <br/>
-              <p>{this.state.signature}</p>
-
-            </div>
-
-              <a href="/" className="btn btn-primary transition-3d-hover" onClick={ evt => this.clearForm(evt)}>Go Home</a>
-          </div>
-        </div>
-      </main>
       )
     }
 
     else {
       return (
-        <main id="content" role="main">
-        <div className="container u-space-2">
           <div className="w-md-75 w-lg-50 mx-md-auto">
             <div className="mb-7">
               <h1 className="h3 text-primary font-weight-normal mb-0">Uh Oh!</h1>
@@ -239,13 +227,11 @@ class SignUpPageBase extends Component {
 
               <a href="/" className="btn btn-primary transition-3d-hover" onClick={ evt => this.clearForm(evt)}>Go Home</a>
           </div>
-        </div>
-      </main>
       )
     }
   }
 }
 
-const SignUpPage = compose(withRouter, withFirebase,)(SignUpPageBase);
-export default SignUp;
-export { SignUpPage }
+const UserSignUpPage = compose(withRouter, withFirebase,)(UserSignUpPageBase);
+export default UserSignUp;
+export { UserSignUpPage }

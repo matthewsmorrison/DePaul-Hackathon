@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { withFirebase } from '../../Firebase';
 import { AuthUserContext, withAuthorization } from '../../Session';
 import { getDateTime } from '../../../utils/timeFunctions'
+import UserSignUp from '../UserSignUp';
+import UserSignIn from '../UserSignIn';
 
 const FindHome = () => (
   <div>
@@ -15,7 +17,43 @@ const FindHome = () => (
 );
 
 class FindHomePageBase extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      stage: '0',
+      firstTime: false,
+    }
+
+    this.childState = this.childState.bind(this);
+    this.findHome = this.findHome.bind(this);
+  }
+
+  findHome() {
+    var userID = this.props.authUser.uid;
+
+    navigator.geolocation.getCurrentPosition(position => {
+      this.props.firebase.matches().add({
+        host: null,
+        isActive: true,
+        user: userID,
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        isApproved: false,
+      })
+
+      this.setState({
+        stage: '4'
+      })
+    });
+  }
+
+  childState(stage) {
+    this.setState({stage: stage});
+  }
+
   render() {
+    console.log(this.props);
     return(
       <main id="content" role="main">
         <div className="bg-primary">
@@ -33,6 +71,59 @@ class FindHomePageBase extends Component {
             <div className="mb-5">
               <div className="bg-white p-4">
 
+              { this.state.stage === '0' && (
+                <div>
+                  <div className="mb-4 text-center">
+                    <p>Is this your first time using our service?</p>
+                  </div>
+
+                  <div className="mb-4 text-center">
+                    <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '1'})}>Yes</a>
+                    <a href="javascript:void(0)" style={{marginLeft: "20px"}} className="btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '2'})}>No</a>
+                  </div>
+                </div>
+              )}
+
+              { this.state.stage === '1' && (
+                <div>
+                  <UserSignUp childState={this.childState}/>
+                </div>
+              )}
+
+              { this.state.stage === '2' && (
+                <div>
+                  <UserSignIn childState={this.childState}/>
+                </div>
+              )}
+
+              { this.state.stage === '3' && (
+                <div>
+                  <div className="mb-4 text-center">
+                    <p>Do you need a home tonight?</p>
+                  </div>
+
+                  <div className="mb-4 text-center">
+                    <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={() => this.findHome()}>Yes</a>
+                    <a href="javascript:void(0)" style={{marginLeft: "20px"}} className="btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '5'})}>No</a>
+                  </div>
+                </div>
+              )}
+
+              { this.state.stage === '5' && (
+                <div>
+                  <div className="mb-4 text-center">
+                    <p>If you need any other help or services please call Depaul at or phone us at 0808 808 4994 or visit our <a href="https://uk.depaulcharity.org/get-help" target="_blank">website</a></p>
+                  </div>
+                </div>
+              )}
+
+              { this.state.stage === '4' && (
+                <div>
+                  <div className="mb-4 text-center">
+                    <p>We are finding you a place to stay tonight. Depaul will text or call you within the next 2 hours.</p>
+                  </div>
+                </div>
+              )}
 
               </div>
             </div>
@@ -43,14 +134,9 @@ class FindHomePageBase extends Component {
   }
 }
 
-
-
-const condition = authUser => authUser && authUser.isUser;
-
 const FindHomePage = compose(withRouter, withFirebase)(FindHomePageBase);
 
 export default compose(
-  withAuthorization(condition),
   withFirebase,
   withRouter,
 )(FindHome);

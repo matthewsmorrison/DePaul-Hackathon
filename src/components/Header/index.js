@@ -46,6 +46,18 @@ class HeaderAuth extends Component {
                     data-event="hover"
                     data-animation-in="slideInUp"
                     data-animation-out="fadeOut">
+                  <a href="/" id="blogMegaMenu" className="nav-link u-header__nav-link">
+                    Review Users
+                    <span className="fa u-header__nav-link-icon"></span>
+                  </a>
+                 </li>
+               )}
+
+                {this.props.authUser.isDepaul && (
+                  <li className="nav-item u-header__nav-item"
+                    data-event="hover"
+                    data-animation-in="slideInUp"
+                    data-animation-out="fadeOut">
                   <a href="/reviewhosts" id="blogMegaMenu" className="nav-link u-header__nav-link">
                     Review Hosts
                     <span className="fa u-header__nav-link-icon"></span>
@@ -89,6 +101,7 @@ class HeaderAuth extends Component {
               </li>
             )}
 
+
                <li className="nav-item u-header__nav-item"
                  data-event="hover"
                  data-animation-in="slideInUp"
@@ -98,6 +111,7 @@ class HeaderAuth extends Component {
                  <span className="fa u-header__nav-link-icon"></span>
                </a>
               </li>
+
 
 
                   </ul>
@@ -144,8 +158,18 @@ class HeaderNonAuth extends Component {
                     data-event="hover"
                     data-animation-in="slideInUp"
                     data-animation-out="fadeOut">
-                  <a href="/signin" id="blogMegaMenu" className="nav-link u-header__nav-link">
-                    Sign-In
+                  <a href="/findhome" id="blogMegaMenu" className="nav-link u-header__nav-link">
+                    Find Home
+                    <span className="fa u-header__nav-link-icon"></span>
+                  </a>
+                 </li>
+
+                  <li className="nav-item u-header__nav-item"
+                    data-event="hover"
+                    data-animation-in="slideInUp"
+                    data-animation-out="fadeOut">
+                  <a href="/hostsignin" id="blogMegaMenu" className="nav-link u-header__nav-link">
+                    Host/Depaul Sign-In
                     <span className="fa u-header__nav-link-icon"></span>
                   </a>
                  </li>
@@ -154,7 +178,7 @@ class HeaderNonAuth extends Component {
                    data-event="hover"
                    data-animation-in="slideInUp"
                    data-animation-out="fadeOut">
-                 <a href="/signup" id="blogMegaMenu" className="nav-link u-header__nav-link">
+                 <a href="/hostsignup" id="blogMegaMenu" className="nav-link u-header__nav-link">
                    Become A Host
                    <span className="fa u-header__nav-link-icon"></span>
                  </a>

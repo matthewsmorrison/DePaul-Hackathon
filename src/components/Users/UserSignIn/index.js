@@ -4,13 +4,13 @@ import { compose } from 'recompose';
 
 import { withFirebase } from '../../Firebase';
 
-const SignIn = () => (
+const UserSignIn = (props) => (
   <div>
-    <SignInPage/>
+      <UserSignInPage props={props}/>
   </div>
 );
 
-class SignInPageBase extends Component {
+class UserSignInPageBase extends Component {
   constructor(props) {
 
     super(props);
@@ -37,9 +37,11 @@ class SignInPageBase extends Component {
         password: '',
         error: null
       });
-
-      this.props.history.push('/');
-      })
+      return this.props.firebase.user(this.props.firebase.auth.currentUser.uid).get()
+    })
+    .then(userInfo => {
+      this.props.props.childState('3');
+    })
     .then(() => {
       return this.props.firebase.user(this.props.firebase.auth.currentUser.uid).update({
         lastOnline: Date.now()
@@ -78,8 +80,6 @@ class SignInPageBase extends Component {
 
   render() {
     return (
-      <main id="content" role="main">
-      <div className="container u-space-2">
         <div className=" w-md-75 w-lg-50 mx-md-auto">
           <div className="mb-7">
             <h2 className="h3 text-primary font-weight-normal mb-0">Welcome <span className="font-weight-semi-bold">back</span></h2>
@@ -111,12 +111,10 @@ class SignInPageBase extends Component {
 
           </div>
         </div>
-      </div>
-    </main>
     )
   }
 }
 
-const SignInPage = compose(withRouter, withFirebase,)(SignInPageBase);
-export default SignIn;
-export { SignInPage }
+const UserSignInPage = compose(withRouter, withFirebase,)(UserSignInPageBase);
+export default UserSignIn;
+export { UserSignInPage }
