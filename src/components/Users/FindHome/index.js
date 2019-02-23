@@ -59,7 +59,7 @@ class FindHomePageBase extends Component {
             longitude: position.coords.longitude,
             isApproved: false,
           })
-           
+
           this.setState({stage:'4'})
         })
       }
@@ -110,7 +110,7 @@ class FindHomePageBase extends Component {
                   </div>
 
                   <div className="mb-4 text-center">
-                    <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={() => this.findHome()}>I need somewhere to stay.</a>
+                    <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '4'})}>I need somewhere to stay.</a>
                     <a href="javascript:void(0)" className="mt-2 btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '5'})}>I need someone to talk to.</a>
                   </div>
                 </div>
@@ -127,6 +127,7 @@ class FindHomePageBase extends Component {
               { this.state.stage === '4' && (
                 <div>
                   <div className="mb-4 pb-2 text-center">
+                    <h1 className="h3 text-primary text-underline font-weight-normal mb-4">StopOver Services.</h1>
                     <p>We are finding you a place to stay tonight. Depaul will text or call you within the next 2 hours.</p>
                   </div>
                   <div class="row">
