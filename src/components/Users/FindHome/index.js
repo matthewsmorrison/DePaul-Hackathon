@@ -32,7 +32,7 @@ class FindHomePageBase extends Component {
   findHome() {
 
     function isMatching(user, host) {
-      if(user.religion != host.religion && user.religion !== "All") return false;
+      // if(user.religion != host.religion && user.religion !== "All") return false;
       return true;
     }
 
