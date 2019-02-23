@@ -119,10 +119,33 @@ class FindHomePageBase extends Component {
 
               { this.state.stage === '4' && (
                 <div>
-                  <div className="mb-4 text-center">
+                  <div className="mb-4 pb-2 text-center">
                     <p>We are finding you a place to stay tonight. Depaul will text or call you within the next 2 hours.</p>
                   </div>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 mt-1">
+                      <div className="card">
+                        <img className="card-img-top" src="" alt="Card image cap"/>
+                        <div className="card-body">
+                          <h5 className="card-title">Kristina's story.</h5>
+                          <p className="card-text">Kristina's life changed when she was helped by Depaul UK.</p>
+                          <a href="#" className="btn btn-primary">Read more</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 mt-1">
+                      <div className="card">
+                        <img className="card-img-top" src="" alt="Card image cap"/>
+                        <div className="card-body">
+                          <h5 className="card-title">Celani's story.</h5>
+                          <p className="card-text">Celani had nowhere to go when she was discharged from hospital.</p>
+                          <a href="#" className="btn btn-primary">Read more</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
               )}
 
               </div>
