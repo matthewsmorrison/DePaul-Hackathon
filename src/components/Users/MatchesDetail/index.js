@@ -15,8 +15,29 @@ const MatchesDetail = (props) => (
 );
 
 class MatchesDetailPageBase extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: null,
+      hostLatitude: null,
+      hostLongitude: null,
+    }
+
+  }
+
+  componentDidMount() {
+    this.props.firebase.match(this.props.match.params.id).onSnapshot(doc => {
+      if(doc.data().host) {
+        this.props.firebase.user(doc.data().host).get().then(details => {
+          this.setState({ name: details.data().name, hostLatitude: details.data().longitude,  hostLongitude: details.data().latitude})
+        })
+      }
+    })
+  }
+
   render() {
-    console.log(this.props);
+    console.log(this.state);
     return(
       <main id="content" role="main">
         <div className="bg-primary">
@@ -33,7 +54,9 @@ class MatchesDetailPageBase extends Component {
           <div className="container u-space-2-top pb-3">
             <div className="mb-5">
               <div className="bg-white p-4">
-
+                <p>Host Name: {this.state.name}</p>
+                <p>Host Longitude: {this.state.hostLongitude}</p>
+                <p>Host Latitude: {this.state.hostLatitude}</p>
 
 
               </div>
