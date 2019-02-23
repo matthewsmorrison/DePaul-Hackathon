@@ -113,7 +113,9 @@ class FindHomePageBase extends Component {
                     <h1 className="h3 text-primary text-underline font-weight-normal mb-4">StopOver Services.</h1>
                     <p>We are finding you a place to stay tonight. Depaul will text or call you within the next 2 hours.</p>
                   </div>
-                  <i class="fas fa-ellipsis-h"></i>
+                  <div className="mb-4 pb-2 text-center">
+                    <i class="fas fa-ellipsis-h"></i>
+                  </div>
 
                   <div class="row">
                     <div class="col-xs-12 col-sm-6 mt-1">
