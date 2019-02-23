@@ -75,7 +75,7 @@ class ReviewMatchesPageBase extends Component {
                     <h4 className="ml-4 h4 text-dark font-weight-light border-bottom d-inline">Persons Name</h4>
                   </div>
                   <div className="col-6 ">
-                    <img style={{maxWidth: "80px", borderRadius: '50%' }}className="card-img-top pull-right" src="../../assets/img/kristina.png" alt="Card image cap"/>
+                    <img style={{maxWidth: "80px", borderRadius: '50%' }}className="card-img-top pull-right" src="../../assets/img/anna-host.png" alt="Card image cap"/>
                     <h4 className="ml-4 h4 text-dark border-bottom font-weight-light d-inline">Persons Name</h4>
                   </div>
                 </div>
@@ -119,14 +119,38 @@ class ReviewMatchesPageBase extends Component {
               <div className="container u-space-2-top pb-3">
                 <div className="mb-5 ml-8 mr-8">
                   <div className="bg-white p-4">
-                    <h4 className="ml-4 h4 text-dark font-weight-bold align-items-center d-flex justify-content-center">
+                    <h4 className="ml-4 h3 text-primary font-weight-normal align-items-center d-flex justify-content-center">
                       <span className="mr-2">John </span>
                       <i class="fas fa-exchange-alt"></i>
                       <span className="ml-2"> Elisabeth</span>
                     </h4>
                     <p className="align-items-center d-flex justify-content-center">John was matched with Elisabeth!</p>
-                    <p className="align-items-center d-flex justify-content-center">Elisabeth's house is 0.5 miles from John it will take him approximately 20 minutes on foot.</p>
-                    <p className="align-items-center d-flex justify-content-center">In his application John recorded that he was homosexual, Elisabeth has an open policy on sexual orientation.</p>
+
+                    <table className="js-datatable table table-borderless u-datatable__striped u-datatable__content dataTable no-footer">
+                      <thead>
+                      </thead>
+
+                      <tbody>
+                        <tr role="row">
+                          <td colspan="1" style={{textAlign: "center", verticalAlign: "middle"}}><i style={{color: '#11ff3d'}}class="mr-6 fas fa-check-circle"></i></td>
+                          <td colspan="2" style={{textAlign: "center", verticalAlign: "middle"}}><strong className="mr-8">Transport: </strong></td>
+                          <td colspan="6" style={{textAlign: "center", verticalAlign: "middle"}}><p>Elisabeth's house is 0.5 miles from John it will take him approximately 20 minutes on foot.</p></td>
+                        </tr>
+                        <tr>
+                          <td colspan="3"> </td>
+                          <td colspan="6" style={{textAlign: "center", verticalAlign: "middle"}}>
+                            <img style={{maxWidth: "400px" }}className="card-img-top" src="../../assets/img/map_admin.png" alt="Card image cap"/>
+                          </td>
+                        </tr>
+                        <tr role="row">
+                          <td colspan="1" style={{textAlign: "center", verticalAlign: "middle"}}><i style={{color: '#11ff3d'}}class="mr-6 fas fa-check-circle"></i></td>
+                          <td colspan="2" style={{textAlign: "center", verticalAlign: "middle"}}><strong className="mr-8">Safeguarding: </strong></td>
+                          <td colspan="6" style={{textAlign: "center", verticalAlign: "middle"}}><p>In his application John recorded that he was homosexual, Elisabeth has an open policy on sexual orientation.</p></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+
                   </div>
                 </div>
               </div>
