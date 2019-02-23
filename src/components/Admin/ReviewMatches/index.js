@@ -63,54 +63,106 @@ class ReviewMatchesPageBase extends Component {
     console.log(this.state);
     return(
       <main id="content" role="main">
-        <div className="bg-primary">
-          <div className="container u-space-1-top pb-3">
-            <div className="d-sm-flex justify-content-sm-between align-items-sm-center">
-              <div className="mb-3 mb-sm-0">
-                <h3 className="text-white font-weight-medium mb-1">Review All Matches</h3>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div className="bg-light">
           <div className="container u-space-2-top pb-3">
             <div className="mb-5">
               <div className="bg-white p-4">
-                <div className="table-responsive-md u-datatable">
-                  <div id="DataTables_Table_0_wrapper" className="dataTables_wrapper no-footer">
+                <h1 className="h3 text-primary font-weight-normal mb-4">Review Matches</h1>
+                <div className="row">
+                  <div className="col-6 border-right">
+                    <img style={{maxWidth: "80px", borderRadius: '50%' }}className="card-img-top" src="../../assets/img/kristina.png" alt="Card image cap"/>
+                    <h4 className="ml-4 h4 text-dark font-weight-light border-bottom d-inline">Persons Name</h4>
+                  </div>
+                  <div className="col-6 ">
+                    <img style={{maxWidth: "80px", borderRadius: '50%' }}className="card-img-top pull-right" src="../../assets/img/kristina.png" alt="Card image cap"/>
+                    <h4 className="ml-4 h4 text-dark border-bottom font-weight-light d-inline">Persons Name</h4>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-6 border-right">
                     <table className="js-datatable table table-borderless u-datatable__striped u-datatable__content dataTable no-footer">
                       <thead>
-                        <tr role="row">
-                          <th scope="col" style={{textAlign: "center", verticalAlign: "middle"}}>User</th>
-                          <th scope="col" style={{textAlign: "center", verticalAlign: "middle"}}>Host</th>
-                          <th scope="col" style={{textAlign: "center", verticalAlign: "middle"}}>Approve</th>
-                          <th scope="col" style={{textAlign: "center", verticalAlign: "middle"}}>Deny</th>
-                        </tr>
                       </thead>
 
                       <tbody>
-
-
-                      {this.state.matches.map(function(object, index) {
-                          return<tr key={index} className={index%2 ? "text-seconary odd" : "text-seconary even"} style={{fontSize: "0.95rem"}}>
-                                  <td style={{textAlign: "center", verticalAlign: "middle"}}>{object.user}</td>
-                                  <td style={{textAlign: "center", verticalAlign: "middle"}}>{object.host === undefined ? "No Matched Host" : object.host}</td>
-                                  <td style={{textAlign: "center", verticalAlign: "middle"}}>
-                                    <a href="javascript:void(0)" onClick={() => this.approve(object.uid)}>Approve</a>
-                                  </td>
-
-                                  <td style={{textAlign: "center", verticalAlign: "middle"}}>
-                                    <a href="javascript:void(0)">Deny</a>
-                                  </td>
-                                </tr>
-                        }.bind(this))
-                      }
-
-
+                        <tr role="row">
+                          <td style={{textAlign: "center", verticalAlign: "middle"}}><p><span className="font-weight-bold">Age:</span> 23</p></td>
+                          <td style={{textAlign: "center", verticalAlign: "middle"}}><p><span className="font-weight-bold">Sex:</span> Female</p></td>
+                        </tr>
+                        <tr role="row">
+                          <td className="mt-1"style={{textAlign: "center", verticalAlign: "middle"}}><p><span className="font-weight-bold"><i class="fas fa-phone"></i></span> +447768996755</p></td>
+                          <td style={{textAlign: "center", verticalAlign: "middle"}}><a href="#"><i class="fas fa-eye mr-1"></i>View Profile</a></td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
+                  <div className="col-6">
+                    <table className="js-datatable table table-borderless u-datatable__striped u-datatable__content dataTable no-footer">
+                      <thead>
+                      </thead>
+
+                      <tbody>
+                        <tr role="row">
+                          <td style={{textAlign: "center", verticalAlign: "middle"}}><p><span className="font-weight-bold">Age:</span> 23</p></td>
+                          <td style={{textAlign: "center", verticalAlign: "middle"}}><p><span className="font-weight-bold">Sex:</span> Female</p></td>
+                        </tr>
+                        <tr role="row">
+                          <td className="mt-1"style={{textAlign: "center", verticalAlign: "middle"}}><p><span className="font-weight-bold"><i class="fas fa-phone"></i></span> +447768996755</p></td>
+                          <td style={{textAlign: "center", verticalAlign: "middle"}}><a href="#"><i class="fas fa-eye mr-1"></i>View Profile</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div className="container u-space-2-top pb-3">
+                <div className="mb-5 ml-8 mr-8">
+                  <div className="bg-white p-4">
+                    <h4 className="ml-4 h4 text-dark font-weight-bold align-items-center d-flex justify-content-center">
+                      <span className="mr-2">John </span>
+                      <i class="fas fa-exchange-alt"></i>
+                      <span className="ml-2"> Elisabeth</span>
+                    </h4>
+                    <p className="align-items-center d-flex justify-content-center">John was matched with Elisabeth!</p>
+                    <p className="align-items-center d-flex justify-content-center">Elisabeth's house is 0.5 miles from John it will take him approximately 20 minutes on foot.</p>
+                    <p className="align-items-center d-flex justify-content-center">In his application John recorded that he was homosexual, Elisabeth has an open policy on sexual orientation.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="table-responsive-md u-datatable">
+                <div id="DataTables_Table_0_wrapper" className="dataTables_wrapper no-footer">
+                  <table className="js-datatable table table-borderless u-datatable__striped u-datatable__content dataTable no-footer">
+                    <thead>
+                      <tr role="row">
+                        <th scope="col" style={{textAlign: "center", verticalAlign: "middle"}}>User</th>
+                        <th scope="col" style={{textAlign: "center", verticalAlign: "middle"}}>Host</th>
+                        <th scope="col" style={{textAlign: "center", verticalAlign: "middle"}}>Approve</th>
+                        <th scope="col" style={{textAlign: "center", verticalAlign: "middle"}}>Deny</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+
+                    {this.state.matches.map(function(object, index) {
+                        return<tr key={index} className={index%2 ? "text-seconary odd" : "text-seconary even"} style={{fontSize: "0.95rem"}}>
+                                <td style={{textAlign: "center", verticalAlign: "middle"}}>{object.user}</td>
+                                <td style={{textAlign: "center", verticalAlign: "middle"}}>{object.host === undefined ? "No Matched Host" : object.host}</td>
+                                <td style={{textAlign: "center", verticalAlign: "middle"}}>
+                                  <a href="javascript:void(0)" onClick={() => this.approve(object.uid)}>Approve</a>
+                                </td>
+
+                                <td style={{textAlign: "center", verticalAlign: "middle"}}>
+                                  <a href="javascript:void(0)">Deny</a>
+                                </td>
+                              </tr>
+                      }.bind(this))
+                    }
+
+
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
