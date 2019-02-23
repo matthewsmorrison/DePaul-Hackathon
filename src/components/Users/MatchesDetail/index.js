@@ -53,6 +53,52 @@ class MatchesDetailPageBase extends Component {
           </div>
         </div>
 
+
+        <div className="bg-light">
+          <div className="container u-space-2-top pb-3">
+            <div className="mb-5">
+              <div className="bg-white p-4">
+                <h2>
+                  Your host
+                </h2>
+                <h3>
+                  {this.state.name}
+                </h3>
+       
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore facilis perspiciatis possimus perferendis. Nostrum aliquam voluptatem reprehenderit nam repudiandae quae at, rerum.
+                </p>
+
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore facilis perspiciatis possimus perferendis.
+                </p>              
+
+                <h2>
+                  Your room
+                </h2>
+
+                <h2>
+                  Get to  {this.state.name}s house
+                </h2>
+                <a href={"https://www.google.com/maps/dir/?api=1&origin="+ this.state.userLatitude +"," + this.state.userLongitude + "&destination=" + this.state.hostLatitude + "," + this.state.hostLongitude + "&travelmode=walking"} target="_blank">Walking</a>
+                <a href={"https://www.google.com/maps/dir/?api=1&origin="+ this.state.userLatitude +"," + this.state.userLongitude + "&destination=" + this.state.hostLatitude + "," + this.state.hostLongitude + "&travelmode=bicycling"} target="_blank">Bicycling</a>
+                <a href={"https://www.google.com/maps/dir/?api=1&origin="+ this.state.userLatitude +"," + this.state.userLongitude + "&destination=" + this.state.hostLatitude + "," + this.state.hostLongitude + "&travelmode=driving"} target="_blank">Driving</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
         <div className="bg-light">
           <div className="container u-space-2-top pb-3">
             <div className="mb-5">
@@ -62,7 +108,9 @@ class MatchesDetailPageBase extends Component {
                 <p>Host Latitude: {this.state.hostLatitude}</p>
                 <p>User Longitude: {this.state.userLongitude}</p>
                 <p>User Latitude: {this.state.userLatitude}</p>
-
+                <a href={"https://www.google.com/maps/dir/?api=1&origin="+ this.state.userLatitude +"," + this.state.userLongitude + "&destination=" + this.state.hostLatitude + "," + this.state.hostLongitude + "&travelmode=walking"} target="_blank">Walking</a>
+                <a href={"https://www.google.com/maps/dir/?api=1&origin="+ this.state.userLatitude +"," + this.state.userLongitude + "&destination=" + this.state.hostLatitude + "," + this.state.hostLongitude + "&travelmode=bicycling"} target="_blank">Bicycling</a>
+                <a href={"https://www.google.com/maps/dir/?api=1&origin="+ this.state.userLatitude +"," + this.state.userLongitude + "&destination=" + this.state.hostLatitude + "," + this.state.hostLongitude + "&travelmode=driving"} target="_blank">Driving</a>
 
               </div>
             </div>
