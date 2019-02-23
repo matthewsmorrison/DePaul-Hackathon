@@ -116,6 +116,9 @@ class ReviewMatchesPageBase extends Component {
                   </div>
                 </div>
               </div>
+
+              // A button here that says 'Review match' that then reveals the below div
+
               <div className="container u-space-2-top pb-3">
                 <div className="mb-5 ml-8 mr-8">
                   <div className="bg-white p-4">
@@ -150,6 +153,7 @@ class ReviewMatchesPageBase extends Component {
                       </tbody>
                     </table>
 
+                    // At the bottom of this table have two buttons one saying 'Approve' another saying 'Reject'
 
                   </div>
                 </div>
