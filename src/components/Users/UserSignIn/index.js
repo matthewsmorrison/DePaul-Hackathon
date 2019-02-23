@@ -47,6 +47,9 @@ class UserSignInPageBase extends Component {
         lastOnline: Date.now()
       });
     })
+    .then(() => {
+      this.props.props.findHome();
+    })
       .catch(error => {
       alert(error.message);
       this.setState({
@@ -106,7 +109,7 @@ class UserSignInPageBase extends Component {
               <a className="small" href="/signup"> Sign-Up</a>
             </div>
             <div className="col-6 text-right">
-              <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={ evt => this.signIn(evt) }>Login</a>
+              <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={ evt => this.signIn(evt) }>Find Home</a>
             </div>
 
           </div>

@@ -25,14 +25,28 @@ class UserSignUpPageBase extends Component {
       password1Error: true,
       password2: '',
       password2Error: true,
+      sexuality: '',
+      religion: '',
+      gender: '',
+      mentalHealth: '',
       error: '',
       stage: 0,
       triedPress: false,
+      sexualityActive: false,
+      religionActive: false,
+      genderActive: false,
+      mentalHealthActive: false,
     }
 
     this.updateState = this.updateState.bind(this);
     this.signUp = this.signUp.bind(this);
     this.clearForm = this.clearForm.bind(this);
+    this.next = this.next.bind(this);
+  }
+
+  next() {
+    this.setState({stage: 1});
+    window.scrollTo(0,0);
   }
 
   clearForm(evt) {
@@ -47,6 +61,10 @@ class UserSignUpPageBase extends Component {
      password1Error: true,
      password2: '',
      password2Error: true,
+     sexuality: '',
+     religion: '',
+     gender: '',
+     mentalHealth: '',
      error: '',
      stage: 1,
      triedPress: false,
@@ -58,6 +76,10 @@ class UserSignUpPageBase extends Component {
   signUp(evt) {
     var name = this.state.name;
     var email = this.state.email;
+    var sexuality = this.state.sexuality;
+    var religion = this.state.religion;
+    var gender = this.state.gender;
+    var mentalHealth = this.state.mentalHealth;
     var newAccount;
 
     if(!this.state.emailError && !this.state.nameError && !this.state.password1Error && !this.state.password2Error) {
@@ -74,11 +96,16 @@ class UserSignUpPageBase extends Component {
           isApprovedHost: false,
           isDepaul: false,
           isHost: false,
+          sexuality: sexuality,
+          religion: religion,
+          gender: gender,
+          mentalHealth: mentalHealth,
           lastOnline: Date.now(),
         }, {merge: true},);
       })
       .then(() => {
         this.props.props.childState('3');
+        this.props.props.findHome();
       })
       .catch(error => {
         console.log(error);
@@ -91,6 +118,10 @@ class UserSignUpPageBase extends Component {
           password1Error: true,
           password2: '',
           password2Error: true,
+          sexuality: '',
+          religion: '',
+          gender: '',
+          mentalHealth: '',
           error: '',
           stage: 2,
           triedPress: false,
@@ -106,22 +137,10 @@ class UserSignUpPageBase extends Component {
     }
   }
 
-  componentDidMount() {
-    console.log(this.props.firebase);
-    // window.recaptchaVerifier = new this.props.firebase.auth().RecaptchaVerifier('sign-in-button', {
-    //   'size': 'invisible',
-    //   'callback': function(response) {
-    //     // reCAPTCHA solved, allow signInWithPhoneNumber.
-    //     this.props.firebase.onSignInSubmit();
-    //   }
-    // });
-  }
-
   updateState(evt) {
     let target = evt.target;
     let id = target.id;
     let newState = this.state;
-    // var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 
     function validateEmail(email) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -145,7 +164,6 @@ class UserSignUpPageBase extends Component {
       case 'signinSrPassword':
         newState.password1 = target.value;
         if(newState.password1 === '') newState.password1Error = true;
-        // else if(!strongRegex.test(newState.password1)) newState.password1Error = true
         else newState.password1Error = false;
 
         if(newState.password1 !== newState.password2) newState.password2Error = true;
@@ -173,9 +191,131 @@ class UserSignUpPageBase extends Component {
     if(this.state.stage === 0) {
       return (
         <div className="w-md-75 w-lg-50 mx-md-auto">
+          <div className="mb-4 text-center">
+            <h1 className="h3 text-primary font-weight-normal mb-4">Welcome To Stopover</h1>
+          </div>
+
+          <div className="mb-3">
+            <p>Stopover is a service to find you a place to stay.</p>
+            <hr className="my-3"/>
+          </div>
+
+          <div className="mb-3">
+            <p>Is there anything we need to know?</p>
+          </div>
+
+          <div className="mb-3 text-center">
+            <div className="row">
+              <div className="col-lg-12 mb-7 mb-lg-0">
+                <div style={{ borderColor: this.state.sexualityActive ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-4">
+                  <div className="card-body text-center">
+                    <a href="javascript:void(0);" className="d-block text-muted" onClick={() => this.setState({sexualityActive: true, religionActive: false, genderActive: false, mentalHealthActive: false})}>Sexuality</a>
+                  </div>
+                </div>
+
+                {this.state.sexualityActive &&
+                  <div className="col-lg-2 mb-7 mb-lg-0 text-center">
+                    <div style={{ borderColor: this.state.sexuality === "Heterosexual" ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-1">
+                      <div className="card-body text-center">
+                        <a href="javascript:void(0);" onClick={() => this.setState({sexuality: "Heterosexual"})}><small className="d-block text-muted">Heterosexual</small></a>
+                      </div>
+                    </div>
+
+                    <div style={{ borderColor: this.state.sexuality === "Homosexual" ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-1">
+                      <div className="card-body text-center">
+                        <a href="javascript:void(0);" onClick={() => this.setState({sexuality: "Homosexual"})}><small className="d-block text-muted">Homosexual</small></a>
+                      </div>
+                    </div>
+                  </div>
+                }
+
+                <div style={{ borderColor: this.state.religionActive ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-4">
+                  <div className="card-body text-center">
+                    <a href="javascript:void(0);" className="d-block text-muted" onClick={() => this.setState({sexualityActive: false, religionActive: true, genderActive: false, mentalHealthActive: false})}>Religion</a>
+                  </div>
+                </div>
+
+                {this.state.religionActive &&
+                  <div className="col-lg-2 mb-7 mb-lg-0 text-center">
+                    <div style={{ borderColor: this.state.religion === "Christian" ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-1">
+                      <div className="card-body text-center">
+                        <a href="javascript:void(0);" onClick={() => this.setState({religion: "Christian"})}><small className="d-block text-muted">Christian</small></a>
+                      </div>
+                    </div>
+
+                    <div style={{ borderColor: this.state.religion === "Muslim" ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-1">
+                      <div className="card-body text-center">
+                        <a href="javascript:void(0);" onClick={() => this.setState({religion: "Muslim"})}><small className="d-block text-muted">Muslim</small></a>
+                      </div>
+                    </div>
+                  </div>
+                }
+
+                <div style={{ borderColor: this.state.genderActive ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-4">
+                  <div className="card-body text-center">
+                    <a href="javascript:void(0);" className="d-block text-muted" onClick={() => this.setState({sexualityActive: false, religionActive: false, genderActive: true, mentalHealthActive: false})}>Gender</a>
+                  </div>
+                </div>
+
+                {this.state.genderActive &&
+                  <div className="col-lg-2 mb-7 mb-lg-0 text-center">
+                    <div style={{ borderColor: this.state.gender === "Male" ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-1">
+                      <div className="card-body text-center">
+                        <a href="javascript:void(0);" onClick={() => this.setState({gender: "Male"})}><small className="d-block text-muted">Male</small></a>
+                      </div>
+                    </div>
+
+                    <div style={{ borderColor: this.state.gender === "Female" ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-1">
+                      <div className="card-body text-center">
+                        <a href="javascript:void(0);" onClick={() => this.setState({gender: "Female"})}><small className="d-block text-muted">Female</small></a>
+                      </div>
+                    </div>
+                  </div>
+                }
+
+                <div style={{ borderColor: this.state.mentalHealthActive ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-4">
+                  <div className="card-body text-center">
+                    <a href="javascript:void(0);" className="d-block text-muted" onClick={() => this.setState({sexualityActive: false, religionActive: false, genderActive: false, mentalHealthActive: true})}>Mental Health</a>
+                  </div>
+                </div>
+
+
+              {this.state.mentalHealthActive &&
+                <div className="col-lg-2 mb-7 mb-lg-0 text-center">
+                  <div style={{ borderColor: this.state.mentalHealth === "Yes" ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-1">
+                    <div className="card-body text-center">
+                      <a href="javascript:void(0);" onClick={() => this.setState({mentalHealth: "Yes"})}><small className="d-block text-muted">Yes</small></a>
+                    </div>
+                  </div>
+
+                  <div style={{ borderColor: this.state.mentalHealth === "No" ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-1">
+                    <div className="card-body text-center">
+                      <a href="javascript:void(0);" onClick={() => this.setState({mentalHealth: "No"})}><small className="d-block text-muted">No</small></a>
+                    </div>
+                  </div>
+                </div>
+              }
+
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div className="mb-3 text-center">
+            <hr className="my-3"/>
+            <button className="btn btn-primary transition-3d-hover" onClick={evt => this.next()}>Next</button>
+          </div>
+        </div>
+      )
+    }
+
+    else if(this.state.stage === 1) {
+      return (
+        <div className="w-md-75 w-lg-50 mx-md-auto">
             <div className="mb-7">
-              <h1 className="h3 text-primary font-weight-normal mb-4">Sign up to the Nightstop Network</h1>
-              <p>Fill out the form below to start using Nightstop services.</p>
+              <h1 className="h3 text-primary font-weight-normal mb-4">We just need a few more details</h1>
             </div>
 
             <div className="js-form-message form-group">
@@ -209,7 +349,7 @@ class UserSignUpPageBase extends Component {
               </div>
 
               <div className="col-7 col-sm-6 text-right">
-                <button className="btn btn-primary transition-3d-hover" onClick={evt => this.signUp(evt)}>Get Started</button>
+                <button className="btn btn-primary transition-3d-hover" onClick={evt => this.signUp(evt)}>Find Home</button>
               </div>
             </div>
           </div>

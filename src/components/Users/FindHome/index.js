@@ -36,6 +36,8 @@ class FindHomePageBase extends Component {
       return true;
     }
 
+    console.log(this.props.authUser);
+
     var userID = this.props.authUser.uid;
 
     this.props.firebase.users().get().then(snapshot => {
@@ -59,8 +61,8 @@ class FindHomePageBase extends Component {
             longitude: position.coords.longitude,
             isApproved: false,
           })
-           
-          this.setState({stage:'4'})
+
+          this.setState({stage:'3'})
         })
       }
     })
@@ -103,38 +105,17 @@ class FindHomePageBase extends Component {
 
               { this.state.stage === '1' && (
                 <div>
-                  <UserSignUp childState={this.childState}/>
+                  <UserSignUp childState={this.childState} findHome={this.findHome}/>
                 </div>
               )}
 
               { this.state.stage === '2' && (
                 <div>
-                  <UserSignIn childState={this.childState}/>
+                  <UserSignIn childState={this.childState} findHome={this.findHome}/>
                 </div>
               )}
 
               { this.state.stage === '3' && (
-                <div>
-                  <div className="mb-4 text-center">
-                    <p>Do you need a home tonight?</p>
-                  </div>
-
-                  <div className="mb-4 text-center">
-                    <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={() => this.findHome()}>Yes</a>
-                    <a href="javascript:void(0)" style={{marginLeft: "20px"}} className="btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '5'})}>No</a>
-                  </div>
-                </div>
-              )}
-
-              { this.state.stage === '5' && (
-                <div>
-                  <div className="mb-4 text-center">
-                    <p>If you need any other help or services please call Depaul at or phone us at 0808 808 4994 or visit our <a href="https://uk.depaulcharity.org/get-help" target="_blank">website</a></p>
-                  </div>
-                </div>
-              )}
-
-              { this.state.stage === '4' && (
                 <div>
                   <div className="mb-4 text-center">
                     <p>We are finding you a place to stay tonight. Depaul will text or call you within the next 2 hours.</p>
