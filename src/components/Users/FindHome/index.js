@@ -75,15 +75,7 @@ class FindHomePageBase extends Component {
   render() {
     return(
       <main id="content" role="main">
-        <div className="bg-primary">
-          <div className="container u-space-1-top pb-3">
-            <div className="d-sm-flex justify-content-sm-between align-items-sm-center">
-              <div className="mb-3 mb-sm-0">
-                <h3 className="text-white font-weight-medium mb-1">Find Home</h3>
-              </div>
-            </div>
-          </div>
-        </div>
+
 
         <div className="bg-light">
           <div className="container u-space-2-top pb-3">
@@ -93,12 +85,10 @@ class FindHomePageBase extends Component {
               { this.state.stage === '0' && (
                 <div>
                   <div className="mb-4 text-center">
-                    <p>Is this your first time using our service?</p>
-                  </div>
+                    <h1 className="h3 text-primary text-underline font-weight-normal mb-4">StopOver Services.</h1>
 
-                  <div className="mb-4 text-center">
-                    <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '1'})}>Yes</a>
-                    <a href="javascript:void(0)" style={{marginLeft: "20px"}} className="btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '2'})}>No</a>
+                    <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '1'})}>I'm new to StopOver.</a>
+                    <a href="javascript:void(0)" className="mt-3 btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '2'})}>I've already signed up. </a>
                   </div>
                 </div>
               )}
@@ -120,7 +110,30 @@ class FindHomePageBase extends Component {
                   <div className="mb-4 text-center">
                     <p>We are finding you a place to stay tonight. Depaul will text or call you within the next 2 hours.</p>
                   </div>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 mt-1">
+                      <div className="card">
+                        <div className="card-body">
+                          <h5 className="card-title">Kristina's story.</h5>
+                          <p className="card-text">Kristina's life changed when she was helped by Depaul UK.</p>
+                          <img className="card-img-top" src="../../assets/img/kristina.png" alt="Card image cap"/>
+                          <a href="#" className="mt-2 btn btn-primary">Read more</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 mt-1">
+                      <div className="card">
+                        <div className="card-body">
+                          <h5 className="card-title">Celani's story.</h5>
+                          <p className="card-text">Celani had nowhere to go when she was discharged from hospital.</p>
+                          <img className="card-img-top" src="../../assets/img/celani.png" alt="Card image cap"/>
+                          <a href="#" className="mt-2 btn btn-primary">Read more</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
               )}
 
               </div>
