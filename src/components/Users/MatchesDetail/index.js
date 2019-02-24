@@ -20,6 +20,9 @@ class MatchesDetailPageBase extends Component {
 
     this.state = {
       name: null,
+      hostIntroduction1: null,
+      hostIntroduction2: null,
+      hostIntroduction3: null,
       hostLatitude: null,
       hostLongitude: null,
       userLatitude: null,
@@ -33,7 +36,7 @@ class MatchesDetailPageBase extends Component {
       if(doc.data().host) {
         this.setState({userLatitude: doc.data().latitude, userLongitude: doc.data().longitude})
         this.props.firebase.user(doc.data().host).get().then(details => {
-          this.setState({ name: details.data().name, hostLatitude: details.data().latitude,  hostLongitude: details.data().longitude})
+          this.setState({ name: details.data().name, hostIntroduction1: details.data().introduction, hostIntroduction2: details.data().introduction2, hostIntroduction3: details.data().introduction3, hostLatitude: details.data().latitude,  hostLongitude: details.data().longitude})
         })
       }
     })
@@ -48,8 +51,8 @@ class MatchesDetailPageBase extends Component {
         <div className="bg-light">
           <div className="container u-space-2-top pb-3" text-align= "center">
             <div className="mb-5" >
-              <div className="bg-white p-4" margin= "20px 0">
-                   <h1 className="h3 text-primary text-underline font-weight-normal mb-4">Congratulations, you have a match.</h1>
+              <div className="bg-white p-4 text-center">
+                   <h1 className="h3 text-primary text-underline font-weight-normal mb-4 text-left">Congratulations, you have a match.</h1>
 
                 <h4>
                   Your host
@@ -59,17 +62,14 @@ class MatchesDetailPageBase extends Component {
                 <img style={{maxWidth: "80px", borderRadius: '50%' }}className="card-img-top pull-right" src="../../assets/img/anna-host.png" alt="Card image cap"/>
                 </div>
 
-                <h3 clasName="d-flex  justify-content-center">
+                <h6 clasName="d-flex  justify-content-center">
                   {this.state.name}
-                </h3>
+                </h6>
        
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                </p>
-
-                <p>
-                  Lorem ipsum dolor sit amet
-                </p>              
+                <p className="text-left"> {this.state.hostIntroduction1} </p>
+                <p className="text-left"> {this.state.hostIntroduction2} </p>
+                <p className="text-left"> {this.state.hostIntroduction3} </p>
+      
 
                 <h4 className="mt-6">
                   Your room
@@ -106,33 +106,6 @@ class MatchesDetailPageBase extends Component {
           </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-        <div className="bg-light">
-          <div className="container u-space-2-top pb-3">
-            <div className="mb-5">
-              <div className="bg-white p-4">
-                <p>Host Name: {this.state.name}</p>
-                <p>Host Longitude: {this.state.hostLongitude}</p>
-                <p>Host Latitude: {this.state.hostLatitude}</p>
-                <p>User Longitude: {this.state.userLongitude}</p>
-                <p>User Latitude: {this.state.userLatitude}</p>
-                <a href={"https://www.google.com/maps/dir/?api=1&origin="+ this.state.userLatitude +"," + this.state.userLongitude + "&destination=" + this.state.hostLatitude + "," + this.state.hostLongitude + "&travelmode=walking"} target="_blank">Walking</a>
-                <a href={"https://www.google.com/maps/dir/?api=1&origin="+ this.state.userLatitude +"," + this.state.userLongitude + "&destination=" + this.state.hostLatitude + "," + this.state.hostLongitude + "&travelmode=bicycling"} target="_blank">Bicycling</a>
-                <a href={"https://www.google.com/maps/dir/?api=1&origin="+ this.state.userLatitude +"," + this.state.userLongitude + "&destination=" + this.state.hostLatitude + "," + this.state.hostLongitude + "&travelmode=driving"} target="_blank">Driving</a>
-
-              </div>
-            </div>
-          </div>
-        </div>
       </main>
     )
   }
