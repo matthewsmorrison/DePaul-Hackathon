@@ -198,7 +198,7 @@ class UserSignUpPageBase extends Component {
           <div className="mb-3">
             <p>Stopover will help you find somewhere to stay tonight.</p>
             <br/>
-            <p>Before we start looking, if there is anything we should consider to make your stay more comfortable, please let us know below.</p>
+            <p>Before we start looking, if there is anything we should consider to make your stay more comfortable, please let us know below. If you would rather not say then please click <a href="javascript:void(0);">here</a>.</p>
             <br/>
             <p>If you would rather talk to someone in person, then please call us at 0207 939 1220.</p>
             <hr className="my-3"/>

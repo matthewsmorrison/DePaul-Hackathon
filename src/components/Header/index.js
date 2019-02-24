@@ -26,7 +26,7 @@ class HeaderAuth extends Component {
 
             <div id="logoAndNav" className="container">
               <nav className="js-mega-menu navbar navbar-expand-md u-header__navbar">
-                <Link to="/" className="navbar-brand u-header__navbar-brand u-header__navbar-brand-top-space" aria-label="Front"><img src="../../assets/svg/logos/stopover_logo.png" style={{width:"90%"}} alt="Logo"></img></Link>
+                <Link to="/" className="navbar-brand u-header__navbar-brand u-header__navbar-brand-top-space" aria-label="Front"><img src="../../assets/img/stopover_logo.png" style={{width:"90%"}} alt="Logo"></img></Link>
                 <button type="button" className="navbar-toggler btn u-hamburger"
                         aria-label="Toggle navigation"
                         aria-expanded="false"

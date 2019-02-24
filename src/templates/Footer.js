@@ -9,7 +9,7 @@ export const Footer = () => (
       <div className="col-6 col-lg-3 mb-7 mb-lg-0">
 
         <Link to="/" className="d-inline-block mb-3" aria-label="Front">
-          <img src=".../../assets/img/stopover_logo.png" alt="Logo" style={{width: "120px"}}></img>
+          <img src="../../assets/img/stopover_logo.png" alt="Logo" style={{width: "120px"}}></img>
         </Link>
 
         <p className="small text-muted">&copy; Stopover 2019 <br/> All rights reserved</p>

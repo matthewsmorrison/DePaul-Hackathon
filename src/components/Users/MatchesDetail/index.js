@@ -58,18 +58,24 @@ class MatchesDetailPageBase extends Component {
                   Your host
                 </h4>
 
-                <div>  
+                <div>
                 <img style={{maxWidth: "80px", borderRadius: '50%' }}className="card-img-top pull-right" src="../../assets/img/anna-host.png" alt="Card image cap"/>
                 </div>
 
                 <h6 clasName="d-flex  justify-content-center">
                   {this.state.name}
                 </h6>
-       
-                <p className="text-left"> {this.state.hostIntroduction1} </p>
-                <p className="text-left"> {this.state.hostIntroduction2} </p>
+                <br/>
+                <strong><p className="text-left" >Message from Lizzy</p></strong>
+
+                <p className="text-left"> {this.state.hostIntroduction1} {this.state.hostIntroduction2} </p>
                 <p className="text-left"> {this.state.hostIntroduction3} </p>
-      
+
+                <br/>
+                <strong><p className="text-left" >Message from Depaul</p></strong>
+
+                <p className="text-left">We hope you enjoy your stay with Lizzy. We have checked her house and ensured everything is safe. Also this is a LGBTQ friendly household like you requested.</p>
+                <p className="text-left">If there are any problems then phone Simon from Depaul at 02080299912</p>
 
                 <h4 className="mt-6">
                   Your room
@@ -95,7 +101,11 @@ class MatchesDetailPageBase extends Component {
                 <h4 className="mt-6">
                   Get to  {this.state.name}s house
                 </h4>
-
+                <p>Do you need help getting to Lizzy's house? Depaul can help you. Just click <a href="javascript:void(0);">here</a>.</p>
+                <br/>
+                  <a href={"https://www.google.com/maps/dir/?api=1&origin="+ this.state.userLatitude +"," + this.state.userLongitude + "&destination=" + this.state.hostLatitude + "," + this.state.hostLongitude + "&travelmode=walking"} target="_blank" className="mr-2">Open in Google Maps</a><i class="fas fa-external-link-alt" style={{color: "#377dff"}}></i>
+                  <br/>
+                  <br/>
                 <div>
                 <a href={"https://www.google.com/maps/dir/?api=1&origin="+ this.state.userLatitude +"," + this.state.userLongitude + "&destination=" + this.state.hostLatitude + "," + this.state.hostLongitude + "&travelmode=walking"} target="_blank">
                   <img style={{maxWidth: "297px" }} src="../../assets/img/map-matching.png" alt="Card image cap"/>

@@ -19,6 +19,7 @@ import MyGuests from '../Hosts/MyGuests';
 // admin pages
 import HostReview from '../Admin/HostReview';
 import ReviewMatches from '../Admin/ReviewMatches';
+import MatchDetail from '../Admin/MatchDetail';
 
 // import templates
 import { Home } from '../../templates/Home';
@@ -56,6 +57,7 @@ class App extends Component {
 					{/* admin pages */}
 					<Route path="/reviewhosts" component = {HostReview}/>
 					<Route path="/reviewmatches" component = {ReviewMatches}/>
+					<Route path="/review/:id" render={(props) => <MatchDetail {...props}/> }/>
 
 					{/* host pages */}
 					<Route path="/hostsignin" component = {HostSignIn}/>
