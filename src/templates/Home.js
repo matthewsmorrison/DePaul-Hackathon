@@ -9,7 +9,7 @@ export const Home = () => (
         <div className="row">
           <div className="col-lg-5">
             <div className="g-mb-32">
-              <h1 className="display-4 font-size-48--md-down mb-3">Nightstop<br/></h1>
+              <h1 className="display-4 font-size-48--md-down mb-3">Stopover<br/></h1>
               <p>Intelligent matching of homes for those who need them.</p>
             </div>
 
