@@ -70,6 +70,7 @@ class FindHomePageBase extends Component {
     //   }
     // })
     this.setState({stage:'4'})
+    window.scrollTo(0,0);
 
   }
 
