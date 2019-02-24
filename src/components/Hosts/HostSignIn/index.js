@@ -26,6 +26,8 @@ class HostSignInPageBase extends Component {
   }
 
   signIn(evt) {
+
+
     this.props.firebase
     .doSignInWithEmailAndPassword(this.state.email,this.state.password)
     .then(() => {
@@ -80,6 +82,7 @@ class HostSignInPageBase extends Component {
   }
 
   render() {
+    console.log(this.props.firebase);
     return (
       <main id="content" role="main">
       <div className="container u-space-2">

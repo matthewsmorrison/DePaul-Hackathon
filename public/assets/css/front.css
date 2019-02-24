@@ -17,7 +17,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga", "kern";
   text-rendering: optimizelegibility;
-  margin-top: 0px;
+  margin-top: 80px;
 }
 
 main {

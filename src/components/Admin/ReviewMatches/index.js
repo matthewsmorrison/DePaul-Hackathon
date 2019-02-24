@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { withFirebase } from '../../Firebase';
 import { AuthUserContext, withAuthorization } from '../../Session';
 import { getDateTime } from '../../../utils/timeFunctions'
+import axios from 'axios';
 
 const ReviewMatches = () => (
   <div>
@@ -26,9 +27,31 @@ class ReviewMatchesPageBase extends Component {
   }
 
   approve(uid) {
-    this.props.firebase.match(uid).update({
-      isApproved: true,
-    });
+    var body = {
+      host: 'Elisabeth Campbell',
+      address: 'W1F 8JB',
+      link: 'https://depaul-hackathon.firebaseapp.com/',
+      receiver: '+447746731969'
+    };
+
+    axios({
+        method: 'post',
+        url: 'https://us-central1-depaul-hackathon.cloudfunctions.net/sendText',
+        data: JSON.stringify(body),
+        config: {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }
+      })
+      .then(function (response) {
+        //handle success
+        console.log(response);
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
   }
 
   componentDidMount() {
