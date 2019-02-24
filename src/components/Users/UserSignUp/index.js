@@ -192,21 +192,22 @@ class UserSignUpPageBase extends Component {
       return (
         <div className="w-md-75 w-lg-50 mx-md-auto">
           <div className="mb-4 text-center">
-            <h1 className="h3 text-primary font-weight-normal mb-4">Welcome To Stopover</h1>
+            <h1 className="h3 text-primary font-weight-normal mb-4">Accommodation Services</h1>
           </div>
 
           <div className="mb-3">
-            <p>Stopover is a service to find you a place to stay.</p>
+            <p>Stopover will help you find somewhere to stay tonight.</p>
+            <br/>
+            <p>Before we start looking, if there is anything we should consider to make your stay more comfortable, please let us know below.</p>
+            <br/>
+            <p>If you would rather talk to someone in person, then please call us at 0207 939 1220.</p>
             <hr className="my-3"/>
           </div>
 
-          <div className="mb-3">
-            <p>Is there anything we need to know?</p>
-          </div>
 
           <div className="mb-3 text-center">
             <div className="row">
-              <div className="col-lg-12 mb-7 mb-lg-0">
+              <div className="col-lg-12 mb-1 mb-lg-0">
                 <div style={{ borderColor: this.state.sexualityActive ? "#377dff" : "#e7eaf3", borderWidth: "1px"}} className="card p-1 mb-4">
                   <div className="card-body text-center">
                     <a href="javascript:void(0);" className="d-block text-muted" onClick={() => this.setState({sexualityActive: true, religionActive: false, genderActive: false, mentalHealthActive: false})}>Sexuality</a>
@@ -319,8 +320,8 @@ class UserSignUpPageBase extends Component {
             </div>
 
             <div className="js-form-message form-group">
-              <label className="form-label" htmlFor="signinSrEmail">Email address</label>
-              <input type="email" className="form-control" name="email" id="signinSrEmail" onChange={evt => this.updateState(evt)} placeholder="Email address"></input>
+              <label className="form-label" htmlFor="signinSrEmail">Phone Number</label>
+              <input type="email" className="form-control" name="email" id="signinSrEmail" onChange={evt => this.updateState(evt)} placeholder="Phone Number"></input>
               {this.state.emailError && this.state.triedPress && <div style={{display: "block"}} className="invalid-feedback">That is not a valid email address</div>}
             </div>
 
@@ -330,18 +331,6 @@ class UserSignUpPageBase extends Component {
               {this.state.nameError && this.state.triedPress && <div style={{display: "block"}} className="invalid-feedback">That is not a valid name</div>}
             </div>
 
-            <div className="js-form-message form-group">
-              <label className="form-label" htmlFor="signinSrPassword">Password</label>
-              <input type="password" className="form-control" name="password" id="signinSrPassword" onChange={evt => this.updateState(evt)} placeholder="********"></input>
-              {this.state.password1Error && this.state.triedPress && <div style={{display: "block"}} className="invalid-feedback">Your password is empty</div>}
-            </div>
-
-            <div className="js-form-message form-group">
-              <label className="form-label" htmlFor="signinSrConfirmPassword">Confirm password</label>
-              <input type="password" className="form-control" name="confirmPassword" id="signinSrConfirmPassword" onChange={evt => this.updateState(evt)} placeholder="********"></input>
-              {this.state.password2Error && this.state.triedPress && <div style={{display: "block"}} className="invalid-feedback">Your passwords do not match</div>}
-            </div>
-
             <div className="row align-items-center mb-5">
               <div className="col-5 col-sm-6">
                 <span className="small text-muted">Already have an account?</span>
@@ -349,7 +338,7 @@ class UserSignUpPageBase extends Component {
               </div>
 
               <div className="col-7 col-sm-6 text-right">
-                <button className="btn btn-primary transition-3d-hover" onClick={evt => this.signUp(evt)}>Find Home</button>
+                <button className="btn btn-primary transition-3d-hover" onClick={evt => this.props.props.findHome()}>Find Home</button>
               </div>
             </div>
           </div>

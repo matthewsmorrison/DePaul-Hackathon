@@ -89,18 +89,8 @@ class UserSignInPageBase extends Component {
             <p>Login to manage your account.</p>
           </div>
           <div className="js-form-message form-group">
-            <label className="form-label">Email address</label>
-            <input type="email" className="form-control" name="email" id="signinSrEmail" placeholder="Email address" onChange={evt => this.updateState(evt)}></input>
-          </div>
-
-          <div className="js-form-message form-group">
-            <label className="form-label">
-              <span className="d-flex justify-content-between align-items-center">
-                Password</span>
-
-            </label>
-            <input type="password" className="form-control" name="password" id="signinSrPassword" placeholder="********" aria-label="********" onChange={evt => this.updateState(evt)}></input>
-            <a className="small" href="/forgot"> Forgot Password?</a>
+            <label className="form-label">Phone Number</label>
+            <input type="email" className="form-control" name="email" id="signinSrEmail" placeholder="Phone number" onChange={evt => this.updateState(evt)}></input>
           </div>
 
           <div className="row align-items-center mb-5">
@@ -109,7 +99,7 @@ class UserSignInPageBase extends Component {
               <a className="small" href="/signup"> Sign-Up</a>
             </div>
             <div className="col-6 text-right">
-              <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={ evt => this.signIn(evt) }>Find Home</a>
+              <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={ evt => this.props.props.childState('3') }>Find Home</a>
             </div>
 
           </div>

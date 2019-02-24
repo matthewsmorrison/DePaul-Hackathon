@@ -31,41 +31,43 @@ class FindHomePageBase extends Component {
 
   findHome() {
 
-    function isMatching(user, host) {
-      if(user.religion != host.religion && user.religion !== "All") return false;
-      return true;
-    }
+    // function isMatching(user, host) {
+    //   if(user.religion != host.religion && user.religion !== "All") return false;
+    //   return true;
+    // }
+    //
+    // console.log(this.props.authUser);
+    //
+    // var userID = this.props.authUser.uid;
+    //
+    // this.props.firebase.users().get().then(snapshot => {
+    //   let hosts = [];
+    //   if(snapshot.size) {
+    //
+    //
+    //     snapshot.forEach(function(doc) {
+    //       // Criteria for matching algorithm
+    //       if(doc.data().isApprovedHost && isMatching(this.props.authUser, doc.data())) {
+    //         hosts.push({...doc.data(), uid: doc.id});
+    //       }
+    //     }.bind(this))
+    //
+    //     navigator.geolocation.getCurrentPosition(position => {
+    //       this.props.firebase.matches().add({
+    //         host: hosts[0].uid,
+    //         isActive: true,
+    //         user: userID,
+    //         latitude: position.coords.latitude,
+    //         longitude: position.coords.longitude,
+    //         isApproved: false,
+    //       })
+    //
+    //       this.setState({stage:'3'})
+    //     })
+    //   }
+    // })
+    this.setState({stage:'4'})
 
-    console.log(this.props.authUser);
-
-    var userID = this.props.authUser.uid;
-
-    this.props.firebase.users().get().then(snapshot => {
-      let hosts = [];
-      if(snapshot.size) {
-
-
-        snapshot.forEach(function(doc) {
-          // Criteria for matching algorithm
-          if(doc.data().isApprovedHost && isMatching(this.props.authUser, doc.data())) {
-            hosts.push({...doc.data(), uid: doc.id});
-          }
-        }.bind(this))
-
-        navigator.geolocation.getCurrentPosition(position => {
-          this.props.firebase.matches().add({
-            host: hosts[0].uid,
-            isActive: true,
-            user: userID,
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            isApproved: false,
-          })
-
-          this.setState({stage:'3'})
-        })
-      }
-    })
   }
 
   childState(stage) {
@@ -87,11 +89,25 @@ class FindHomePageBase extends Component {
                   <div className="mb-4 text-center">
                     <h1 className="h3 text-primary text-underline font-weight-normal mb-4">StopOver Services.</h1>
 
-                    <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '1'})}>I'm new to StopOver.</a>
+                    <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '3'})}>I'm new to StopOver.</a>
                     <a href="javascript:void(0)" className="mt-3 btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '2'})}>I've already signed up. </a>
                   </div>
                 </div>
               )}
+
+              { this.state.stage === '3' && (
+                <div>
+                  <div className="mb-4 text-center">
+                    <h1 className="h3 text-primary text-underline font-weight-normal mb-4">StopOver Services.</h1>
+                  </div>
+
+                  <div className="mb-4 text-center">
+                    <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '1'})}>I need somewhere to stay.</a>
+                    <a href="javascript:void(0)" className="mt-2 btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '5'})}>I need someone to talk to.</a>
+                  </div>
+                </div>
+              )}
+
 
               { this.state.stage === '1' && (
                 <div>
@@ -105,18 +121,6 @@ class FindHomePageBase extends Component {
                 </div>
               )}
 
-              { this.state.stage === '3' && (
-                <div>
-                  <div className="mb-4 text-center">
-                    <h1 className="h3 text-primary text-underline font-weight-normal mb-4">StopOver Services.</h1>
-                  </div>
-
-                  <div className="mb-4 text-center">
-                    <a href="javascript:void(0)" className="btn btn-primary transition-3d-hover" onClick={() => this.findHome()}>I need somewhere to stay.</a>
-                    <a href="javascript:void(0)" className="mt-2 btn btn-primary transition-3d-hover" onClick={() => this.setState({stage: '5'})}>I need someone to talk to.</a>
-                  </div>
-                </div>
-              )}
 
               { this.state.stage === '5' && (
                 <div>
