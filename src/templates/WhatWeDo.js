@@ -7,7 +7,7 @@ export const WhatWeDo = () => (
     <div className="w-md-80 w-lg-100 text-center mx-auto mb-9">
         <span className="u-label u-label--sm u-label--primary mb-2">What We Do</span>
       <h3 style={{marginTop: "10px"}}>Providing Homes For Those In Need</h3>
-      <p>Stopover provides an immediate place to stay for those in the most need.</p>
+      <p>StopOver provides an immediate place to stay for those in the most need.</p>
     </div>
 
     <div className="row">
